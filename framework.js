@@ -5,7 +5,8 @@
 // The framework can require core libraries
 var fs = require('fs'),
     vm = require('vm');
-
+ //функция которая создаёт обёртку вокруг функции fn таким образом чтобы 
+ //она делала именно то, что нам нужно
  function wrapFunction(fnName, fn) {
     return function wrapper() {
       var args = [];
@@ -15,7 +16,8 @@ var fs = require('fs'),
       return fn.apply(undefined, args);
     }
   };
-
+//функция которая поочерёдно берёт каждый метод из оригинального интерфейса
+//и записывает её в новый хеш предварительно сделав нужную нам обёртку вокруг неё
   function cloneInterface(newInterface) {
     var clone = {};
     for (var key in newInterface) {
